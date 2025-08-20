@@ -14,8 +14,10 @@ export function setupNewTaskModalHandler() {
   const cancelBtn = document.getElementById("cancel-add-btn");
 
   newTaskBtn.addEventListener("click", () => {
+    console.log("Add new task button clicked");
     overlay.style.visibility = "visible";
     overlay.showModal();
+
   });
 
   cancelBtn.addEventListener("click", () => overlay.close());

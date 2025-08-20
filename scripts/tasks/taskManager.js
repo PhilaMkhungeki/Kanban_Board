@@ -5,7 +5,7 @@ import {
 import { clearExistingTasks, renderTasks } from "../ui/render.js";
 import { resetForm } from "./formUtils.js";
 
-export async function addNewTask() {
+export function addNewTask() {
   const title = document.getElementById("title-input").value.trim();
   const description = document.getElementById("desc-input").value.trim();
   const status = document.getElementById("select-status").value;
@@ -13,7 +13,7 @@ export async function addNewTask() {
 
   if (!title) return;
 
-  const tasks = await loadTasksFromStorage();
+  const tasks = loadTasksFromStorage();
   const newTask = {
     id: tasks.length ? Math.max(...tasks.map((t) => t.id)) + 1 : 1,
     title,
@@ -27,6 +27,11 @@ export async function addNewTask() {
   console.log("Added new to local storage");
   clearExistingTasks();
   renderTasks(updatedTasks);
+
+  // hide "No tasks yet" message once a task is created
+  document.getElementById("loading-message").textContent = "";
+
+
   resetForm();
   overlay.close();
 }

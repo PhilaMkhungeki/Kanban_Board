@@ -60,6 +60,7 @@ const sideBarBackground = document.querySelector(".side-bar");
 const headerBackground = document.querySelector(".sticky-header");
 const theme = document.getElementById("theme");
 const themeToogle = document.getElementById("themeToogle");
+const allTasks = document.querySelectorAll(".task-div");
 
 themeToogle.addEventListener('change', () => {
     if(themeToogle.checked) {
@@ -72,8 +73,10 @@ themeToogle.addEventListener('change', () => {
         headerBackground.style.color = "#ffffff";
         theme.style.backgroundColor = "#635fc7";
         menu.style.backgroundColor =  "#20212C";
-        document.body.classList.toggle("dark-mode", themeToogle.checked);
+        document.body.classList.add("dark-mode");
+        document.body.classList.remove("light-mode");
     } else {
+        document.body.style.backgroundColor = "#f4f7fd";
         hideSidebar.style.backgroundColor = "#f4f7fd";
         hideSidebar.style.color = "#605f69ff";
         lightModeLogo.src = "./assets/logo-light.svg";
@@ -82,9 +85,8 @@ themeToogle.addEventListener('change', () => {
         headerBackground.style.color = "#000000";
         theme.style.backgroundColor = "#f4f7fd";
         menu.style.backgroundColor =  "#ffffff";
-        document.body.style.backgroundColor = "#f4f7fd";
-        document.body.classList.toggle("light-mode");
-    }
-    
+        document.body.classList.add("light-mode");
+        document.body.classList.remove("dark-mode");
+    }  
 });
 

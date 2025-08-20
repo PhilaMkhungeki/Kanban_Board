@@ -1,34 +1,18 @@
-import { fetchTasksFromAPI } from "../fetch.js";
-
-
 /**
  * Loads tasks from localStorage or fetches them from the API if not found.
  * @returns {Promise<Array<Object>} The array of tasks.
  */
-export async function loadTasksFromStorage() {
-
-  const stored = localStorage.getItem("tasks") || [];
-  if (stored) {
-    try {
-      return JSON.parse(stored);
-    } catch (err) {
-      console.error("Error parsing tasks from localStorage:", err);
-    }
-  }
-
-  // If no tasks in storage, initializes with tasks from the API
+export function loadTasksFromStorage() {
   try {
-    const tasks = await fetchTasksFromAPI();
-    if(tasks && Array.isArray(tasks)) {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      return tasks;
-    }else {
-      throw new Error("No tasks returned from API");
+    const stored = localStorage.getItem("tasks");
+    if (!stored) {
+      return []; // return an empty array because there is nothing in storage yet
     }
-  } catch (error) {
-    console.error("Error loading tasks from API:", error);
-    return [];
-  }
+        return JSON.parse(stored);
+  } catch (err) {
+        console.error("Error parsing tasks from localStorage:", err);
+        return [];
+  }  
 }
 
 /**

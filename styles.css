@@ -315,20 +315,25 @@ h2 {
   font-size: 1.5rem;
   margin: 0;
 }
-
+/*default light mode*/
 .task-div {
   background-color: #ffffff;
   color: #20212C;
 }
 
-.dark-mode .task-div {
+body.dark-mode .task-div {
   background-color: #20212C;
   color: #ffffff;
 }
 
-.light-mode .task-div {
+body.dark-mode{
+  background-color: #20212C;
+  color: #ffffff;
+}
+
+body.light-mode {
   background-color: #ffffff;
-  color: #20212C;
+  color: #000000;
 }
 
 /* ===============
