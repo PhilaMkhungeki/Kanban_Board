@@ -41,14 +41,16 @@ mobileThemeToogle.addEventListener('change', () => {
         headerBackground.style.color = "#ffffff";
         menu.style.backgroundColor =  "#20212C";
         mobileTheme.style.backgroundColor = "#635fc7";
-        document.body.classList.toggle("dark-mode", themeToogle.checked);
+        document.body.classList.add("dark-mode");
+        document.body.classList.remove("light-mode");
     } else {
         headerBackground.style.backgroundColor = "#ffffff";
         headerBackground.style.color = "#000000";
         mobileTheme.style.backgroundColor = "#f4f7fd";
         menu.style.backgroundColor =  "#ffffff";
         document.body.style.backgroundColor = "#f4f7fd";
-        document.body.classList.toggle("light-mode");
+        document.body.classList.add("light-mode");
+        document.body.classList.remove("dark-mode");
     }
     
 });
@@ -60,7 +62,6 @@ const sideBarBackground = document.querySelector(".side-bar");
 const headerBackground = document.querySelector(".sticky-header");
 const theme = document.getElementById("theme");
 const themeToogle = document.getElementById("themeToogle");
-const allTasks = document.querySelectorAll(".task-div");
 
 themeToogle.addEventListener('change', () => {
     if(themeToogle.checked) {

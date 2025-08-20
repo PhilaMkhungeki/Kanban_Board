@@ -8,10 +8,10 @@ export function loadTasksFromStorage() {
     if (!stored) {
       return []; // return an empty array because there is nothing in storage yet
     }
-        return JSON.parse(stored);
+        return JSON.parse(stored); 
   } catch (err) {
         console.error("Error parsing tasks from localStorage:", err);
-        return [];
+        return [];  //fallback to empty array
   }  
 }
 
